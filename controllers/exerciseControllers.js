@@ -13,6 +13,8 @@ const db = getFirestore(firebase)
 
 export const getExercises = async (req, res, next) => {
   try {
+    console.log('Try block')
+
     const exercises = await getDocs(collection(db, 'exercises'))
     const exerciseArray = []
 
