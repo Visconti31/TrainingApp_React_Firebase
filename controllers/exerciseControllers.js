@@ -8,6 +8,8 @@ import {
   getDocs,
   getDoc,
   addDoc,
+  updateDoc,
+  deleteDoc,
 } from 'firebase/firestore'
 
 const db = getFirestore(firebase)
@@ -58,6 +60,22 @@ export const getExercise = async (req, res, next) => {
   }
 }
 
+// Update exercise
+export const updateExercise = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const data = req.body
+    const docRef = doc(db, 'exercises', id)
+    await updateDoc(docRef, data)
+
+    const exercise = await getDoc(docRef)
+
+    res.status(200).send(exercise.data())
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
 // Create exercise
 // TODO: Validate the data
 export const createExercise = async (req, res, next) => {
@@ -66,6 +84,17 @@ export const createExercise = async (req, res, next) => {
 
     await addDoc(collection(db, 'exercises'), data)
     res.status(200).send('Product created')
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
+// Delete exercise
+export const deleteExercise = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    await deleteDoc(doc(db, 'exercises', id))
+    res.status(200).send('Exercise deleted')
   } catch (error) {
     res.status(500).send(error.message)
   }
