@@ -41,7 +41,22 @@ export const getExercises = async (req, res, next) => {
 }
 
 // Get one exercise
-export const getExercise = async (req, res, next) => {}
+export const getExercise = async (req, res, next) => {
+  try {
+    const id = req.params.id
+
+    const exercise = doc(db, 'exercises', id)
+    const data = await getDoc(exercise)
+
+    if (data.exists()) {
+      res.status(200).send(data.data())
+    } else {
+      res.status(400).send('Product not found')
+    }
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
 
 // Create exercise
 // TODO: Validate the data
