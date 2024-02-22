@@ -7,10 +7,12 @@ import {
   doc,
   getDocs,
   getDoc,
+  addDoc,
 } from 'firebase/firestore'
 
 const db = getFirestore(firebase)
 
+// Get all the exercises
 export const getExercises = async (req, res, next) => {
   try {
     console.log('Try block')
@@ -23,7 +25,7 @@ export const getExercises = async (req, res, next) => {
     } else {
       exercises.forEach((doc) => {
         const exercise = new Exercise(
-          doc.is,
+          doc.id,
           doc.data().name,
           doc.data().bodyPart,
           doc.data().exerciseType
@@ -33,6 +35,22 @@ export const getExercises = async (req, res, next) => {
     }
 
     res.status(200).send(exerciseArray)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
+// Get one exercise
+export const getExercise = async (req, res, next) => {}
+
+// Create exercise
+// TODO: Validate the data
+export const createExercise = async (req, res, next) => {
+  try {
+    const data = req.body
+
+    await addDoc(collection(db, 'exercises'), data)
+    res.status(200).send('Product created')
   } catch (error) {
     res.status(500).send(error.message)
   }
