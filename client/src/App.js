@@ -1,22 +1,7 @@
-import axios from 'axios'
-
-const apiCall = () => {
-  axios
-    .get('http://localhost:5000/api/')
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((error) => console.log(error))
-}
+import Home from './pages/Home.js'
 
 function App() {
-  return (
-    <div className="App">
-      <h1>React App</h1>
-
-      <button onClick={apiCall}>Api Call</button>
-    </div>
-  )
+  return <Home />
 }
 
 export default App
