@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import ExerciseCard from '../components/ExerciseCard'
 
 export default function Exercise() {
   const [exercise, setExercise] = useState([])
@@ -19,14 +20,15 @@ export default function Exercise() {
   }, [])
 
   return (
-    <div>
-      <h2>
-        <ul>
-          {exercise.map((item) => (
-            <li key={item.id}>{item.name}</li>
-          ))}
-        </ul>
-      </h2>
-    </div>
+    <ExerciseCard />
+    // <div>
+    //   <h2>
+    //     <ul>
+    //       {exercise.map((item) => (
+    //         <li key={item.id}>{item.name}</li>
+    //       ))}
+    //     </ul>
+    //   </h2>
+    // </div>
   )
 }
