@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ExerciseCard from '../components/ExerciseCard'
 import { Grid } from '@mui/material'
+import Navbar from '../components/Navbar'
 
 export default function Exercise() {
   const [exercise, setExercise] = useState([])
@@ -21,22 +22,25 @@ export default function Exercise() {
   }, [])
 
   return (
-    <div>
-      <Grid
-        padding={6}
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        justifyContent="space-around"
-        alignItems="center"
-      >
-        {exercise.map((item) => (
-          <Grid item xs={2} sm={4} key={item.id}>
-            <ExerciseCard name={item.name} />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <Grid
+          padding={6}
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          {exercise.map((item) => (
+            <Grid item xs={2} sm={4} key={item.id}>
+              <ExerciseCard name={item.name} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    </>
     // <div>
     //   {exercise.map((item) => (
     //     <ExerciseCard key={item.id} name={item.name} />
