@@ -17,7 +17,7 @@ export default function ExerciseCard({ name }) {
         <CardMedia
           component="img"
           height="140"
-          image="https://images.app.goo.gl/9joW4V1L8aHnFU9a7"
+          image="../../public/assets/example.jpg"
         />
         <CardContent>
           <Typography>{name}</Typography>
