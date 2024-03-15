@@ -10,7 +10,7 @@ import {
   CardActions,
 } from '@mui/material'
 
-export default function ExerciseCard() {
+export default function ExerciseCard({ name }) {
   return (
     <Card>
       <CardActionArea>
@@ -20,8 +20,7 @@ export default function ExerciseCard() {
           image="https://images.app.goo.gl/9joW4V1L8aHnFU9a7"
         />
         <CardContent>
-          <Typography>Card with image</Typography>
-          <Typography>This is the content of the card</Typography>
+          <Typography>{name}</Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>

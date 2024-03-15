@@ -20,7 +20,11 @@ export default function Exercise() {
   }, [])
 
   return (
-    <ExerciseCard />
+    <div>
+      {exercise.map((item) => (
+        <ExerciseCard key={item.id} name={item.name} />
+      ))}
+    </div>
     // <div>
     //   <h2>
     //     <ul>
